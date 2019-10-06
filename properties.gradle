@@ -1,0 +1,118 @@
+apply plugin: 'idea'
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'com.adarshr.test-logger'
+apply plugin: 'base'
+apply plugin: 'jacoco'
+
+ext {
+    projVersion = '1.0.0'
+    protobufVersion = '3.5.1'
+    protocVersion = '3.5.1-1'
+    grpcVersion = '1.14.0'
+    java_runtime = []
+    java9Plus = []
+    anime =[]
+
+}
+repositories {
+    jcenter()
+    mavenLocal()
+    mavenCentral()
+    google()
+    maven {
+        url "https://dl.bintray.com/codehounded/open"
+    }
+}
+
+test {
+    testlogger {
+        showStandardStreams false
+        slowThreshold 30000
+        theme 'mocha'
+    }
+}
+configurations {
+    provided
+    addToDocker
+}
+idea {
+    module {
+        scopes.PROVIDED.plus += [configurations.provided]
+    }
+}
+group = 'davis'
+version = rootProject.version
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+sourceCompatibility = 1.9
+targetCompatibility = 1.9
+java9Plus = [
+        [configuration: "compile", dependency: "javax.activation:activation:1.1.1"],
+        [configuration: "compile", dependency: "javax.xml.bind:jaxb-api:2.3.0"]
+]
+java_runtime = [
+        [configuration: "compile", dependency: 'io.dropwizard:dropwizard-core:1.3.13'],
+        [configuration: "compile", dependency: 'ch.qos.logback:logback-core:1.2.3']
+]
+
+anime =[
+    [configuration: "compile", dependency: "com.google.protobuf:protobuf-java-util:${protobufVersion}"],
+    [configuration: "compile", dependency: "com.google.protobuf:protobuf-java:${protobufVersion}"],
+    [configuration: "compile", dependency: "io.grpc:grpc-all:${grpcVersion}"],
+    [configuration: "implementation", dependency: "com.uwetrottmann.thetvdb-java:2.1.0"]
+
+]
+
+dependencies {
+    //Javax Annotations
+    //compile 'javax.annotation:javax.annotation-api:1.3.2'
+    //compile 'javax.ws.rs:javax.ws.rs-api:2.1'
+
+    //Json and Yaml
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.9.9'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.9'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.9.9'
+    compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-yaml', version: '2.9.9'
+    compile 'org.yaml:snakeyaml:1.25'
+    //Guava
+    //testCompile 'com.google.guava:guava:18.0'
+    //Apache Commons
+    compile 'org.apache.commons:commons-lang3:3.6'
+    compile 'commons-io:commons-io:2.6'
+    //Metrics Collection
+    //compile "co.elastic.apm:apm-opentracing:1.6.1"
+    //compile "co.elastic.apm:apm-agent-attach:1.6.1"
+    //compile "co.elastic.apm:apm-agent-api:1.6.1"
+    //OkHttp for web requests
+    compile 'com.squareup.okhttp:okhttp:2.7.5'
+    //Lombok
+    compileOnly 'org.projectlombok:lombok:1.18.6'
+    annotationProcessor("org.projectlombok:lombok:1.18.6")
+
+
+    // Logging dependency for all modules
+    compile 'org.slf4j:slf4j-api:1.7.25'
+    compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.13'
+    //Test Dependencies For All Modules
+    testCompileOnly 'org.projectlombok:lombok:1.18.6'
+    testAnnotationProcessor("org.projectlombok:lombok:1.18.6")
+    testCompile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.13'
+    testCompile 'junit:junit:4.12'
+    testCompile group: 'org.awaitility', name: 'awaitility', version: '3.0.0'
+}
+
+
+jacoco {
+    toolVersion = "0.8.3+"
+    reportsDir = file("$buildDir/customJacocoReportDir")
+}
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.destination file("${buildDir}/jacocoHtml")
+    }
+}
+test.finalizedBy jacocoTestReport

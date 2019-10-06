@@ -1,16 +1,31 @@
-plugins {
-    id 'java'
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+        mavenLocal()
+        google()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        //Protobuf
+        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.8'
+        classpath "com.adarshr:gradle-test-logger-plugin:1.7.0"
+    }
+}
+apply from: "$rootProject.projectDir/properties.gradle"
+version projVersion
+
+def allTestCoverageFile = "$buildDir/jacoco/allTestCoverage.exec"
+task jacocoMergeTest(type: JacocoMerge) {
+    destinationFile = file(allTestCoverageFile)
+    executionData = project.fileTree(dir: '.', include:'**/build/jacoco/test.exec')
+}
+task jacocoMerge(dependsOn: ['jacocoMergeTest']) {
+    // used to run the other merge tasks
 }
 
-group 'davis'
-version '1.0'
 
-sourceCompatibility = 1.8
 
-repositories {
-    mavenCentral()
-}
 
-dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-}

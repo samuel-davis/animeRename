@@ -1,0 +1,42 @@
+buildscript {
+    repositories {
+        jcenter()
+        mavenLocal()
+        mavenCentral()
+        google()
+        maven {
+            url "https://dl.bintray.com/codehounded/open"
+        }
+    }
+}
+apply plugin: 'com.google.protobuf'
+apply from: "$rootProject.projectDir/properties.gradle"
+
+apply plugin: 'idea'
+
+dependencies{
+    anime.each {
+        add(it.configuration, it.dependency, it.options)
+    }
+}
+
+sourceSets {
+    main{
+        proto{
+            srcDir 'src/main/protos'
+        }
+    }
+    test{
+        proto{
+            srcDir 'src/test/protos'
+        } 
+    }
+}
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:${protocVersion}"
+    }
+
+}
+
+

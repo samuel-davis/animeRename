@@ -1,2 +1,3 @@
-rootProject.name = 'animeRename'
+rootProject.name = 'AnimeUtility'
+include(':anime')
 

@@ -1,0 +1,40 @@
+syntax = "proto3";
+option java_package = "davis.anime.data";
+option java_multiple_files = true;
+option java_outer_classname = "AnimeProto";
+option objc_class_prefix = "DAVIS";
+
+message Anime{
+  repeated Season seasons=1;
+  uint32 number_seasons=2;
+  string anime_name=3;
+  float total_size=4;
+  string current_path=5;
+  string target_path=6;
+  string current_name=7;
+  string target_name=8;
+  string tvdb_ref=9;
+}
+message Season {
+  uint32 season_number = 1;
+  uint32 number_episodes = 2;
+  repeated Episode episodes =3;
+  float total_size=4;
+  string current_path=5;
+  string target_path=6;
+  string current_name=7;
+  string target_name=8;
+}
+
+message Episode {
+  bool episode_number = 1;
+  Season ref_season = 2;
+  string current_path =3;
+  string target_path =4;
+  string current_name=5;
+  string target_name=6;
+  string tvdb_ref =7;
+  string subtitle_ref=8;
+  bool has_subtitles=9;
+  float file_size=10;
+}
