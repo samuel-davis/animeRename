@@ -15,6 +15,11 @@ public final class AnimeProto {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Anime_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Anime_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Season_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -33,19 +38,24 @@ public final class AnimeProto {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\034davis/anime/data/Anime.proto\"\276\001\n\006Seaso" +
-      "n\022\025\n\rseason_number\030\001 \001(\r\022\027\n\017number_episo" +
-      "des\030\002 \001(\r\022\032\n\010episodes\030\003 \003(\0132\010.Episode\022\022\n" +
-      "\ntotal_size\030\004 \001(\002\022\024\n\014current_path\030\005 \001(\t\022" +
-      "\023\n\013target_path\030\006 \001(\t\022\024\n\014current_name\030\007 \001" +
-      "(\t\022\023\n\013target_name\030\010 \001(\t\"\346\001\n\007Episode\022\026\n\016e" +
-      "pisode_number\030\001 \001(\010\022\033\n\nref_season\030\002 \001(\0132" +
-      "\007.Season\022\024\n\014current_path\030\003 \001(\t\022\023\n\013target" +
-      "_path\030\004 \001(\t\022\024\n\014current_name\030\005 \001(\t\022\023\n\013tar" +
-      "get_name\030\006 \001(\t\022\020\n\010tvdb_ref\030\007 \001(\t\022\024\n\014subt" +
-      "itle_ref\030\010 \001(\t\022\025\n\rhas_subtitles\030\t \001(\010\022\021\n" +
-      "\tfile_size\030\n \001(\002B(\n\020davis.anime.dataB\nAn" +
-      "imeProtoP\001\242\002\005DAVISb\006proto3"
+      "\n\034davis/anime/data/Anime.proto\"\311\001\n\005Anime" +
+      "\022\030\n\007seasons\030\001 \003(\0132\007.Season\022\026\n\016number_sea" +
+      "sons\030\002 \001(\r\022\022\n\nanime_name\030\003 \001(\t\022\022\n\ntotal_" +
+      "size\030\004 \001(\002\022\024\n\014current_path\030\005 \001(\t\022\023\n\013targ" +
+      "et_path\030\006 \001(\t\022\024\n\014current_name\030\007 \001(\t\022\023\n\013t" +
+      "arget_name\030\010 \001(\t\022\020\n\010tvdb_ref\030\t \001(\t\"\276\001\n\006S" +
+      "eason\022\025\n\rseason_number\030\001 \001(\r\022\027\n\017number_e" +
+      "pisodes\030\002 \001(\r\022\032\n\010episodes\030\003 \003(\0132\010.Episod" +
+      "e\022\022\n\ntotal_size\030\004 \001(\002\022\024\n\014current_path\030\005 " +
+      "\001(\t\022\023\n\013target_path\030\006 \001(\t\022\024\n\014current_name" +
+      "\030\007 \001(\t\022\023\n\013target_name\030\010 \001(\t\"\346\001\n\007Episode\022" +
+      "\026\n\016episode_number\030\001 \001(\010\022\033\n\nref_season\030\002 " +
+      "\001(\0132\007.Season\022\024\n\014current_path\030\003 \001(\t\022\023\n\013ta" +
+      "rget_path\030\004 \001(\t\022\024\n\014current_name\030\005 \001(\t\022\023\n" +
+      "\013target_name\030\006 \001(\t\022\020\n\010tvdb_ref\030\007 \001(\t\022\024\n\014" +
+      "subtitle_ref\030\010 \001(\t\022\025\n\rhas_subtitles\030\t \001(" +
+      "\010\022\021\n\tfile_size\030\n \001(\002B(\n\020davis.anime.data" +
+      "B\nAnimeProtoP\001\242\002\005DAVISb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -59,14 +69,20 @@ public final class AnimeProto {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
-    internal_static_Season_descriptor =
+    internal_static_Anime_descriptor =
       getDescriptor().getMessageTypes().get(0);
+    internal_static_Anime_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Anime_descriptor,
+        new java.lang.String[] { "Seasons", "NumberSeasons", "AnimeName", "TotalSize", "CurrentPath", "TargetPath", "CurrentName", "TargetName", "TvdbRef", });
+    internal_static_Season_descriptor =
+      getDescriptor().getMessageTypes().get(1);
     internal_static_Season_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Season_descriptor,
         new java.lang.String[] { "SeasonNumber", "NumberEpisodes", "Episodes", "TotalSize", "CurrentPath", "TargetPath", "CurrentName", "TargetName", });
     internal_static_Episode_descriptor =
-      getDescriptor().getMessageTypes().get(1);
+      getDescriptor().getMessageTypes().get(2);
     internal_static_Episode_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Episode_descriptor,

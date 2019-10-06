@@ -18,6 +18,8 @@ dependencies{
     anime.each {
         add(it.configuration, it.dependency, it.options)
     }
+    compile group: 'com.uwetrottmann.thetvdb-java', name: 'thetvdb-java', version: '2.1.0'
+
 }
 
 sourceSets {

@@ -16,9 +16,9 @@ ext {
 
 }
 repositories {
+    mavenCentral()
     jcenter()
     mavenLocal()
-    mavenCentral()
     google()
     maven {
         url "https://dl.bintray.com/codehounded/open"
@@ -46,8 +46,8 @@ version = rootProject.version
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
-sourceCompatibility = 1.9
-targetCompatibility = 1.9
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 java9Plus = [
         [configuration: "compile", dependency: "javax.activation:activation:1.1.1"],
         [configuration: "compile", dependency: "javax.xml.bind:jaxb-api:2.3.0"]
@@ -60,8 +60,7 @@ java_runtime = [
 anime =[
     [configuration: "compile", dependency: "com.google.protobuf:protobuf-java-util:${protobufVersion}"],
     [configuration: "compile", dependency: "com.google.protobuf:protobuf-java:${protobufVersion}"],
-    [configuration: "compile", dependency: "io.grpc:grpc-all:${grpcVersion}"],
-    [configuration: "implementation", dependency: "com.uwetrottmann.thetvdb-java:2.1.0"]
+    [configuration: "compile", dependency: "io.grpc:grpc-all:${grpcVersion}"]
 
 ]
 
