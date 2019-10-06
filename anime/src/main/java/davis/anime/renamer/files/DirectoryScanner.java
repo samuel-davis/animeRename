@@ -27,13 +27,17 @@ public class DirectoryScanner {
     }
 
   private void addToFiles(Map<String, List<File>> files, Path path) {
-    if (files.get(path.getParent().toString()) == null) {
-      List<File> some = new ArrayList<>();
-      some.add(path.toFile());
-      files.put(path.getParent().toString(), some);
-    } else {
-      files.get(path.getParent().toString()).add(path.toFile());
-    }
+
+     if(!path.getParent().toFile().getAbsolutePath().equalsIgnoreCase(this.basePath.toFile().getAbsolutePath())){
+         if (files.get(path.getParent().toString()) == null) {
+             List<File> some = new ArrayList<>();
+             some.add(path.toFile());
+             files.put(path.getParent().toString(), some);
+         } else {
+             files.get(path.getParent().toString()).add(path.toFile());
+         }
+     }
+
   }
 
   public Map<String, List<File>> getAllFiles() throws IOException {

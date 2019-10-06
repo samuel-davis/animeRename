@@ -27,7 +27,7 @@ message Season {
 }
 
 message Episode {
-  bool episode_number = 1;
+  uint32 episode_number = 1;
   Season ref_season = 2;
   string current_path =3;
   string target_path =4;
@@ -37,4 +37,5 @@ message Episode {
   string subtitle_ref=8;
   bool has_subtitles=9;
   float file_size=10;
+  uint32 season_number = 11;
 }
