@@ -46,7 +46,7 @@ public class Tester {
     try {
       res =
           Integer.valueOf(
-              StringUtils.substringBetween(f.getName(), "Naruto Shippuden -", " -").trim());
+              StringUtils.substringBetween(f.getName(), "-", " -").trim());
 
     } catch (Exception e) {
       // log.error("1");
@@ -55,7 +55,7 @@ public class Tester {
     try {
       if (res == -1) {
         String t =
-            StringUtils.substringBetween(f.getName(), "Naruto Shippuden Episode ", ".mp4").trim();
+            StringUtils.substringBetween(f.getName(), "Episode ", ".mp4").trim();
         if (t != null && !t.equalsIgnoreCase("")) {
           res = Integer.valueOf(t);
         }
@@ -92,7 +92,7 @@ public class Tester {
       if (res == -1) {
         res =
             Integer.valueOf(
-                StringUtils.substringBetween(f.getName(), "Naruto Shippuuden -", "-").trim());
+                StringUtils.substringBetween(f.getName(), "-", "-").trim());
       }
     } catch (Exception e) {
       //    log.error("4");
@@ -217,7 +217,7 @@ public class Tester {
   @Test
   @Ignore
   public void test() throws IOException {
-    String naurtoLocation = "D:\\Multimedia\\TV Shows\\Naruto Shippuden";
+    String naurtoLocation = "Naruto";
 
     boolean useTvDb = false;
 

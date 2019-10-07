@@ -21,7 +21,7 @@ public class Main {
 
   public static void main(String[] args) throws IOException {
     String naurtoLocation =
-        "D:\\Multimedia\\TV Shows\\[HcLs] Naruto Shippuden Season 1-18 English Dubbed [Sehjada]";
+        "Naruto";
 
     boolean useTvDb = false;
 
